@@ -9,6 +9,7 @@
 - Added the mixture-hands module with real code: screen nodes, screen state, Hands actions, approval, and the Hands operator, plus unit tests.
 - Added the mixture-shizuku module with real code: Shizuku state, validated commands, read only detection, approval, and the adapter, plus unit tests.
 - Added the mixture-ui module with real code: design tokens, chat state, approval cards, and the chat reducer, plus unit tests.
+- Added the mixture-model module with real code: OpenRouter config, model request, security check, fake model client, task log, and memory store, plus unit tests.
 
 ## 0.0.0
 
