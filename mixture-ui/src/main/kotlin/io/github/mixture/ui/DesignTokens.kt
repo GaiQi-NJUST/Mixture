@@ -6,6 +6,7 @@ object DesignTokens {
     const val CLAY_MAIN = "#D97757"
     const val CLAY_HOVER = "#CC5A36"
     const val CLAY_VERY_LIGHT = "#FBF3EF"
+    const val DARK_CLAY_HOVER = "#E08264"
     const val LIGHT_SURFACE_0 = "#F5F5F3"
     const val LIGHT_SURFACE_1 = "#FCFCFB"
     const val LIGHT_SURFACE_2 = "#FFFFFF"
@@ -18,6 +19,17 @@ object DesignTokens {
     const val TEXT_PRIMARY = "#151515"
     const val TEXT_SECONDARY = "#525252"
     const val TEXT_MUTED = "#8A8A8A"
+    const val DARK_TEXT_PRIMARY = "#F5F5F5"
+    const val DARK_TEXT_SECONDARY = "#A3A3A3"
+    const val DARK_TEXT_MUTED = "#666666"
+    const val USER_BUBBLE_TINT = "#F0F4F8"
+    const val DARK_USER_BUBBLE_TINT = "#1A1A19"
+    const val BORDER = "#E6E6E6"
+    const val BORDER_STRONG = "#CCCCCC"
+    const val DARK_BORDER = "#2E2E2E"
+    const val DARK_BORDER_STRONG = "#4A4A4A"
+    const val FILL_DANGER = "#EF4444"
+    const val DARK_FILL_DANGER = "#F87171"
 
     const val RADIUS_COMPOSER = 20
     const val RADIUS_BUBBLE = 18

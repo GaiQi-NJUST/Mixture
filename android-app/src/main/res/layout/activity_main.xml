@@ -18,12 +18,12 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-        <TextView
-            android:id="@+id/messages_view"
+        <LinearLayout
+            android:id="@+id/messages_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/text_primary"
-            android:textSize="16sp" />
+            android:orientation="vertical"
+            android:animateLayoutChanges="true" />
     </ScrollView>
 
     <LinearLayout
@@ -37,7 +37,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/input_hint"
-        android:background="@color/light_surface_2" />
+        android:background="@drawable/composer_bg"
+        android:elevation="4dp"
+        android:padding="12dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,13 +51,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/send" />
+            android:background="@drawable/button_bg"
+            android:text="@string/send"
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/stop_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/stop" />
+            android:background="@drawable/button_bg"
+            android:text="@string/stop"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 </LinearLayout>
