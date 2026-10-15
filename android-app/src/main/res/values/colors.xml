@@ -7,6 +7,11 @@
     <color name="light_surface_0">#F5F5F3</color>
     <color name="light_surface_1">#FCFCFB</color>
     <color name="light_surface_2">#FFFFFF</color>
+    <color name="light_surface_3">#FFFFFF</color>
+    <color name="user_bubble_tint">#F0F4F8</color>
+    <color name="border">#E6E6E6</color>
+    <color name="border_strong">#CCCCCC</color>
+    <color name="fill_danger">#EF4444</color>
     <color name="text_primary">#151515</color>
     <color name="text_secondary">#525252</color>
     <color name="text_muted">#8A8A8A</color>

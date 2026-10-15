@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Radii from open-claude-ui, MIT. See docs/design-tokens-open-claude-ui.md. -->
+    <dimen name="radius_composer">20dp</dimen>
+    <dimen name="radius_bubble">18dp</dimen>
+    <dimen name="radius_panel">10dp</dimen>
+    <dimen name="radius_button_small">6dp</dimen>
+    <dimen name="radius_button_medium">8dp</dimen>
+    <dimen name="radius_button_large">10dp</dimen>
+    <dimen name="radius_dialog">16dp</dimen>
+    <dimen name="radius_segmented_track">999dp</dimen>
+</resources>
