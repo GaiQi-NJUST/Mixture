@@ -1,0 +1,18 @@
+{
+  "id": "openrouter",
+  "name": "OpenRouter",
+  "protocol": "openai",
+  "base_url": "https://openrouter.ai/api/v1",
+  "key_url": "https://openrouter.ai/keys",
+  "key_hint": "sk-or-v1-…",
+  "auth": ["key", "oauth-openrouter"],
+  "regions": ["global"],
+  "capabilities": ["chat", "vision", "image"],
+  "defaults": {
+    "chat": "deepseek/deepseek-v4.1-flash",
+    "hands": "qwen/qwen3.8-27b",
+    "image": "openai/gpt-image-2"
+  },
+  "note": "One account, one key, pay as you go. Pictures only through image-output models on OpenRouter Image API (/api/v1/images). Source: nanoMuse nanomuse/llm/providers.json, verified 2026-10.",
+  "verified": "2026-10"
+}

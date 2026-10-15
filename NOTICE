@@ -1,0 +1,26 @@
+Mixture
+Copyright (C) 2026 Mixture contributors
+
+This program is free software: you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License in the file LICENSE for more details.
+
+--------------------------------------------------------------------------
+
+Mixture is based on nanoMuse
+Copyright (C) 2026 nanoMuse contributors
+https://github.com/nano-muse/nanoMuse, commit d808bb2
+nanoMuse is released under GPL-3.0-or-later. See LICENSE.
+
+The Android application in android/, when imported, is based on OpenMinis 1.13
+(https://github.com/OpenMinis/OpenMinis, tag 1.13, commit 4ef2900),
+Copyright (C) the OpenMinis authors, released under the GNU General
+Public License version 3. Edits inside upstream files are marked with
+a // nanoMuse: comment in the upstream tree, and with a // Mixture:
+comment for Mixture edits. New Mixture code lives in new files.
