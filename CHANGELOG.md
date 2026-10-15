@@ -5,6 +5,7 @@
 - Added the GPL-3.0-or-later baseline for Mixture, with README, NOTICE, and third party notices.
 - Added the architecture note, the OpenRouter model API note, the design tokens note, and the fork note.
 - Recorded the upstream nanoMuse commit d808bb2 as the skeleton source.
+- Added the mixture-termux module with real code: workspace paths, validated TermuxCommand, TermuxResult, TermuxBridge, and TermuxLauncher, plus unit tests.
 
 ## 0.0.0
 
