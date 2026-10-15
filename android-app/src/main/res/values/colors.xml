@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tokens from open-claude-ui, MIT. See docs/design-tokens-open-claude-ui.md. -->
+    <color name="clay_main">#D97757</color>
+    <color name="clay_hover">#CC5A36</color>
+    <color name="clay_very_light">#FBF3EF</color>
+    <color name="light_surface_0">#F5F5F3</color>
+    <color name="light_surface_1">#FCFCFB</color>
+    <color name="light_surface_2">#FFFFFF</color>
+    <color name="text_primary">#151515</color>
+    <color name="text_secondary">#525252</color>
+    <color name="text_muted">#8A8A8A</color>
+</resources>

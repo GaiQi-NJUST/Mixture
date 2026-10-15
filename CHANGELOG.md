@@ -10,6 +10,7 @@
 - Added the mixture-shizuku module with real code: Shizuku state, validated commands, read only detection, approval, and the adapter, plus unit tests.
 - Added the mixture-ui module with real code: design tokens, chat state, approval cards, and the chat reducer, plus unit tests.
 - Added the mixture-model module with real code: OpenRouter config, model request, security check, fake model client, task log, and memory store, plus unit tests.
+- Added the android-app shell with real code: MainActivity, MixtureAccessibilityService, TermuxIntentSender, ShizukuBinder, OpenRouterHttpClient, KeystoreStore, Manifest, and native layout.
 
 ## 0.0.0
 
