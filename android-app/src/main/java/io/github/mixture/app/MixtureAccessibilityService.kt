@@ -5,6 +5,7 @@ package io.github.mixture.app
 import android.accessibilityservice.AccessibilityService
 import android.accessibilityservice.GestureDescription
 import android.graphics.Path
+import android.os.Bundle
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityNodeInfo
 import io.github.mixture.hands.HandsAction
@@ -22,6 +23,7 @@ class MixtureAccessibilityService : AccessibilityService() {
     private val executor = ServiceExecutor()
     private val handsOperator = HandsOperator("hands-1", executor, approvalStore)
     private var lastState: ScreenState? = null
+    private val nodeMap = mutableMapOf<String, AccessibilityNodeInfo>()
 
     override fun onServiceConnected() {
         super.onServiceConnected()
@@ -54,6 +56,7 @@ class MixtureAccessibilityService : AccessibilityService() {
     }
 
     private fun buildState(root: AccessibilityNodeInfo): ScreenState {
+        nodeMap.clear()
         val nodes = mutableListOf<ScreenNode>()
         var counter = 0
         fun walk(node: AccessibilityNodeInfo) {
@@ -63,9 +66,10 @@ class MixtureAccessibilityService : AccessibilityService() {
             val text = node.text?.toString()
             val desc = node.contentDescription?.toString()
             val isPassword = node.isPassword
+            val id = "node-" + counter
             nodes.add(
                 ScreenNode(
-                    id = "node-" + counter,
+                    id = id,
                     text = text,
                     contentDescription = desc,
                     bounds = rect,
@@ -75,6 +79,7 @@ class MixtureAccessibilityService : AccessibilityService() {
                     packageName = node.packageName?.toString()
                 )
             )
+            nodeMap[id] = node
             counter += 1
             for (i in 0 until node.childCount) {
                 val child = node.getChild(i) ?: continue
@@ -94,11 +99,11 @@ class MixtureAccessibilityService : AccessibilityService() {
         )
     }
 
-    // Tap by node and Input are not yet wired. They need a node id to AccessibilityNodeInfo map.
-    // TapAt, Swipe, Back, and Home work through gestures and global actions.
     private inner class ServiceExecutor : HandsExecutor {
         override fun execute(action: HandsAction): Boolean {
             return when (action) {
+                is HandsAction.Tap -> tapNode(action.nodeId)
+                is HandsAction.Input -> inputNode(action.nodeId, action.text)
                 is HandsAction.TapAt -> dispatchTap(action.x, action.y)
                 is HandsAction.Swipe -> dispatchSwipe(action.fromX, action.fromY, action.toX, action.toY)
                 is HandsAction.PressBack -> {
@@ -108,6 +113,40 @@ class MixtureAccessibilityService : AccessibilityService() {
                     performGlobalAction(GLOBAL_ACTION_HOME)
                 }
                 else -> false
+            }
+        }
+
+        private fun tapNode(nodeId: String): Boolean {
+            val node = nodeMap[nodeId] ?: return false
+            return try {
+                if (node.isClickable) {
+                    node.performAction(AccessibilityNodeInfo.ACTION_CLICK)
+                } else {
+                    val parent = node.parent ?: return false
+                    try {
+                        parent.performAction(AccessibilityNodeInfo.ACTION_CLICK)
+                    } finally {
+                        parent.recycle()
+                    }
+                }
+            } catch (e: Exception) {
+                false
+            }
+        }
+
+        private fun inputNode(nodeId: String, text: String): Boolean {
+            val node = nodeMap[nodeId] ?: return false
+            return try {
+                if (node.isPassword) return false
+                if (!node.isEditable) return false
+                val args = Bundle()
+                args.putCharSequence(
+                    AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE,
+                    text
+                )
+                node.performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, args)
+            } catch (e: Exception) {
+                false
             }
         }
 

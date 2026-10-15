@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Mixture mark: a simple M in white on the clay background. -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M24,84 L24,24 L38,24 L54,52 L70,24 L84,24 L84,84 L70,84 L70,44 L54,68 L38,44 L38,84 Z" />
+</vector>
