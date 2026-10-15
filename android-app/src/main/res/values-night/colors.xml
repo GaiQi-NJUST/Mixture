@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark tokens from open-claude-ui, MIT. See docs/design-tokens-open-claude-ui.md. -->
+    <color name="clay_main">#D97757</color>
+    <color name="clay_hover">#E08264</color>
+    <color name="clay_very_light">#FBF3EF</color>
+    <color name="light_surface_0">#0B0B0A</color>
+    <color name="light_surface_1">#151515</color>
+    <color name="light_surface_2">#1A1A19</color>
+    <color name="light_surface_3">#20201E</color>
+    <color name="user_bubble_tint">#1A1A19</color>
+    <color name="border">#2E2E2E</color>
+    <color name="border_strong">#4A4A4A</color>
+    <color name="fill_danger">#F87171</color>
+    <color name="text_primary">#F5F5F5</color>
+    <color name="text_secondary">#A3A3A3</color>
+    <color name="text_muted">#666666</color>
+</resources>

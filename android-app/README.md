@@ -1,37 +1,38 @@
 # android-app
 
-Android app shell for Mixture. This is the first runnable shell. It wires the pure logic modules from PR2 to PR6 into an Activity, an AccessibilityService, a Termux intent sender, a Shizuku binder, an OpenRouter HTTP client, and a Keystore store.
+Mixture 的安卓 App 壳。它把 PR2 到 PR6 的纯逻辑模块接进一个 Activity、一个无障碍服务、一个 Termux 发送端、一个 Shizuku 检查、一个 OpenRouter 客户端和一个 Keystore 保管。
 
-## Files
+## 文件
 
-- AndroidManifest.xml: MainActivity, MixtureAccessibilityService, permissions, and package queries for Termux and Shizuku.
-- MainActivity.kt: native Views, chat state, approval cards, Stop, model call.
-- MixtureAccessibilityService.kt: builds ScreenState from the tree, runs Hands actions through gestures and global actions.
-- TermuxIntentSender.kt: builds the RUN_COMMAND intent from TermuxCommand.
-- ShizukuBinder.kt: package check and state. The real Shizuku binder binding comes in a later PR.
-- OpenRouterHttpClient.kt: HttpURLConnection and org.json, with the key from KeystoreStore.
-- KeystoreStore.kt: AndroidKeyStore AES key, ciphertext in SharedPreferences.
-- res/layout/activity_main.xml: native layout, no Compose, no WebView.
-- res/values/colors.xml: open-claude-ui tokens, MIT.
-- res/xml/accessibility_service_config.xml: service config.
+- AndroidManifest.xml：MainActivity、无障碍服务、权限、Termux 和 Shizuku 的包查询。
+- MainActivity.kt：原生 Views，聊天状态、审批卡、停止、模型调用。消息按气泡渲染，用户气泡浅蓝底，助手气泡透明。
+- MixtureAccessibilityService.kt：从无障碍树建 ScreenState，跑 Hands 动作。按节点点按、输入、按坐标点按、滑动、返回、主页都已接线。
+- TermuxIntentSender.kt：从 TermuxCommand 建 RUN_COMMAND intent。
+- ShizukuBinder.kt：包检查和状态。真实的 Shizuku 绑定在后续 PR。
+- OpenRouterHttpClient.kt：HttpURLConnection + org.json，钥匙从 KeystoreStore 来。
+- KeystoreStore.kt：AndroidKeyStore AES 钥匙，密文放 SharedPreferences。
+- res/layout/activity_main.xml：原生布局，不用 Compose，不用 WebView。
+- res/values/colors.xml：open-claude-ui 令牌，MIT。res/values-night/colors.xml：深色模式。
+- res/values/dimens.xml：圆角阶梯。
+- res/drawable/：气泡、输入框、按钮、审批卡背景。
+- res/xml/accessibility_service_config.xml：服务配置。
 
-## Build in Android Studio
+## 在 Android Studio 里编译
 
-Open the repo root in Android Studio, sync Gradle, then Run on a phone with Android 8 or later. The project needs JDK 17, Android SDK 34, and AGP 8.5.2. The Gradle wrapper is not in this PR. Android Studio generates it, or copy it from the nanoMuse skeleton.
+在 Android Studio 打开仓库根目录，同步 Gradle，然后在 Android 8 或更高版本的手机上点 Run。需要 JDK 17、Android SDK 34、AGP 8.5.2。Gradle wrapper 文件已在仓库里，gradle-wrapper.jar 由 Android Studio 生成，或本地跑一次 `gradle wrapper`。
 
-## Permissions to grant on the phone
+## 在手机上开权限
 
-- Accessibility: Settings, Accessibility, Mixture, on. The app never reads a FLAG_SECURE screen and never fills a password field.
-- Termux: install Termux, set allow-external-apps to true in ~/.termux/termux.properties, grant Run commands in Termux environment to Mixture in Settings.
-- Shizuku: optional. Install Shizuku, start it, grant permission. When Shizuku is off, Termux and Hands still work.
+- 无障碍：设置，无障碍，Mixture，开。App 不读 FLAG_SECURE 屏幕，不填密码框。
+- Termux：装 Termux，把 ~/.termux/termux.properties 里的 allow-external-apps 设为 true，在设置里把“在 Termux 里跑命令”授权给 Mixture。
+- Shizuku：可选。装 Shizuku，启动它，授权。Shizuku 关掉时，Termux 和无障碍继续工作。
 
-## Key
+## 钥匙
 
-Add the OpenRouter key in Settings. It goes to KeystoreStore. It is never pasted in chat, never logged, and never committed.
+在设置里加 OpenRouter 的钥匙。它进 KeystoreStore，不在聊天里贴，不进日志，不进仓库。
 
-## Limits in this PR
+## 限制
 
-- Tap by node and Input are not yet wired in the service executor. They need a node id to AccessibilityNodeInfo map. TapAt, Swipe, Back, and Home work.
-- ShizukuBinder only checks the package. The real binder binding comes in a later PR.
-- The Manifest has no app icon in this PR, because binary PNGs are not committed here. The verified APK in the working notes used solid clay color icons generated in the VM. Replace them with a designed icon in a later PR.
-- No Gradle wrapper in this PR. Android Studio generates it. The APK in the working notes was built with aapt2, d8, zipalign, and apksigner, without Gradle.
+- ShizukuBinder 只做包检查。真实绑定在后续 PR。
+- 图标是简单的白色 M 标记。换成设计图标在后续 PR。
+- 深色模式已按令牌配好颜色，仍需在真机上看一遍。

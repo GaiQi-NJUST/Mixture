@@ -8,6 +8,18 @@ import org.junit.Test
 
 class ChatReducerTest {
     @Test
+    fun newTokensMatchReview() {
+        assertEquals("#F0F4F8", DesignTokens.USER_BUBBLE_TINT)
+        assertEquals("#EF4444", DesignTokens.FILL_DANGER)
+        assertEquals("#E6E6E6", DesignTokens.BORDER)
+        assertEquals("#CCCCCC", DesignTokens.BORDER_STRONG)
+        assertEquals("#F5F5F5", DesignTokens.DARK_TEXT_PRIMARY)
+        assertEquals("#E08264", DesignTokens.DARK_CLAY_HOVER)
+        assertEquals("#F87171", DesignTokens.DARK_FILL_DANGER)
+        assertEquals("#FFFFFF", DesignTokens.LIGHT_SURFACE_3)
+    }
+
+    @Test
     fun tokensMatchOpenClaudeUiDoc() {
         assertEquals("#D97757", DesignTokens.CLAY_MAIN)
         assertEquals("#CC5A36", DesignTokens.CLAY_HOVER)
